@@ -1,63 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f4f3f1">
+    <meta name="description" content="Catharty — Atharva Sindwani's desktop for ideas, reflections, and things he is working through.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237467e8'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia' font-size='39' fill='white'%3EC%3C/text%3E%3C/svg%3E">
     <title>Catharty — Atharva Sindwani</title>
-    <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="desktop.css">
+
+    <script>
+        document.documentElement.classList.replace('no-js', 'js');
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"
+            }
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script type="module" src="desktop.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="nav-name"></a>
-        <div class="nav-links">
-            <a href="https://atharvasindwani23.github.io">Website</a>
-            <a href="#about">About</a>
-        </div>
-    </nav>
+    <a class="skip-link" href="#desktop-icons">Skip to posts</a>
 
-    <main>
-        <header class="intro">
-            <h1>Catharty</h1>
-            <p>A place for ideas, reflections, and things I'm working through.</p>
-        </header>
+    <main id="desktop" class="desktop" aria-label="Catharty desktop">
+        <h1 class="visually-hidden">Catharty by Atharva Sindwani</h1>
 
-        <section id="thoughts" class="posts">
-            <article class="post">
-                <time datetime="2026-05-22">May 22, 2026</time>
-                <h2><a href="posts/indecisive-over-inactive.html">Indecisive > Inactive</a></h2>
-                <p>Making the wrong choice still puts you somewhere new. Sitting still because you can't pick perfectly is the only move that guarantees you lose.</p>
-            </article>
+        <svg id="flow-field" class="flow-field" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <circle id="flow-core" class="flow-core" r="5"></circle>
+        </svg>
 
-            <article class="post">
-                <time datetime="2026-05-22">May 22, 2026</time>
-                <h2><a href="posts/junior-year-effect.html">Junior Year Effect</a></h2>
-                <p>That stretch where everything compounds at once — expectations, identity, pressure to have it figured out. The year that reshapes how you see yourself.</p>
-            </article>
+        <section id="desktop-icons" class="desktop-icons" aria-label="Blog posts"></section>
+        <div id="window-layer" class="window-layer" aria-live="polite"></div>
 
-            <article class="post">
-                <time datetime="2026-05-22">May 22, 2026</time>
-                <h2><a href="posts/confusion.html">Confusion</a></h2>
-                <p>Not the bad kind. The kind that means you're actually engaging with something real instead of coasting on what you already know.</p>
-            </article>
-        </section>
+        <footer class="dock-shell">
+            <nav id="dock" class="dock" aria-label="Applications">
+                <button class="dock-item" type="button" data-launch="readme" aria-label="Open README">
+                    <span class="dock-icon dock-icon--readme" aria-hidden="true">
+                        <span class="paper-lines"></span>
+                    </span>
+                    <span class="dock-tooltip" aria-hidden="true">README</span>
+                    <span class="dock-running-dot"></span>
+                </button>
+                <button class="dock-item" type="button" data-launch="about" aria-label="Open About Atharva">
+                    <span class="dock-icon dock-icon--about" aria-hidden="true">A</span>
+                    <span class="dock-tooltip" aria-hidden="true">About</span>
+                    <span class="dock-running-dot"></span>
+                </button>
+                <span class="dock-divider" aria-hidden="true"></span>
+                <a class="dock-item" href="https://atharvasindwani23.github.io" target="_blank" rel="noopener noreferrer" aria-label="Atharva's personal website (opens in a new tab)">
+                    <span class="dock-icon dock-icon--website" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-2.6a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8ZM12 4c.8 1.1 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.9 1.9-4ZM4.3 14a7.8 7.8 0 0 1 0-4h3a17.6 17.6 0 0 0 0 4Zm.8 2h2.6c.4 1.3.8 2.5 1.4 3.6A8 8 0 0 1 5.1 16Zm2.6-8H5.1a8 8 0 0 1 4-3.6C8.5 5.5 8.1 6.7 7.7 8ZM12 20c-.8-1.1-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.9-1.9 4Zm2.3-6H9.7a15.6 15.6 0 0 1 0-4h4.6a15.6 15.6 0 0 1 0 4Zm.6 5.6c.6-1.1 1-2.3 1.4-3.6h2.6a8 8 0 0 1-4 3.6ZM16.7 14a17.6 17.6 0 0 0 0-4h3a7.8 7.8 0 0 1 0 4Z"/></svg>
+                    </span>
+                    <span class="dock-tooltip" aria-hidden="true">Website</span>
+                </a>
+                <a class="dock-item" href="https://github.com/atharvasindwani23" target="_blank" rel="noopener noreferrer" aria-label="Atharva on GitHub (opens in a new tab)">
+                    <span class="dock-icon dock-icon--github" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.88c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.82a9.5 9.5 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                    </span>
+                    <span class="dock-tooltip" aria-hidden="true">GitHub</span>
+                </a>
+                <a class="dock-item" href="https://x.com/atharwows" target="_blank" rel="noopener noreferrer" aria-label="Atharva on X (opens in a new tab)">
+                    <span class="dock-icon dock-icon--x" aria-hidden="true">𝕏</span>
+                    <span class="dock-tooltip" aria-hidden="true">X</span>
+                </a>
+                <a class="dock-item" href="https://www.linkedin.com/in/atharva-sindwani-686b292a7/" target="_blank" rel="noopener noreferrer" aria-label="Atharva on LinkedIn (opens in a new tab)">
+                    <span class="dock-icon dock-icon--linkedin" aria-hidden="true">in</span>
+                    <span class="dock-tooltip" aria-hidden="true">LinkedIn</span>
+                </a>
+                <span id="minimized-divider" class="dock-divider dock-divider--minimized" aria-hidden="true"></span>
+                <div id="minimized-dock" class="minimized-dock" aria-label="Minimized windows"></div>
+            </nav>
+        </footer>
 
-        <section id="about" class="about">
-            <h2>Atharva Sindwani</h2>
-            <p class="pronunciation">/uh-THAR-vuh sin-DWAH-nee/</p>
-            <p>Hi, I'm Atharva. I love writing, cats, and fried chicken.</p>
-        </section>
+        <div id="live-region" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
     </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="https://github.com/atharvasindwani23">GitHub</a>
-            <a href="https://x.com/atharwows">Twitter</a>
-            <a href="https://www.linkedin.com/in/atharva-sindwani-686b292a7/">LinkedIn</a>
-        </div>
-        <span>&copy; 2026</span>
-    </footer>
+    <noscript>
+        <main class="noscript-fallback">
+            <p class="noscript-kicker">Catharty</p>
+            <h1>Atharva's writing, without the desktop.</h1>
+            <p>JavaScript powers the interactive desktop. Every post still works on its own.</p>
+            <nav aria-label="Blog posts">
+                <a href="posts/indecisive-over-inactive.html">Indecisive &gt; Inactive</a>
+                <a href="posts/junior-year-effect.html">Junior Year Effect</a>
+                <a href="posts/confusion.html">Confusion</a>
+            </nav>
+        </main>
+    </noscript>
+
+    <template id="window-template">
+        <section class="mac-window" role="dialog" aria-modal="false" tabindex="-1">
+            <header class="window-titlebar" data-drag-handle>
+                <div class="traffic-lights" aria-label="Window controls">
+                    <button class="traffic-light traffic-light--close" type="button" data-window-action="close" aria-label="Close window"><span aria-hidden="true"></span></button>
+                    <button class="traffic-light traffic-light--minimize" type="button" data-window-action="minimize" aria-label="Minimize window"><span aria-hidden="true"></span></button>
+                    <button class="traffic-light traffic-light--zoom" type="button" data-window-action="zoom" aria-label="Zoom window"><span aria-hidden="true"></span></button>
+                </div>
+                <h2 class="window-title"></h2>
+                <span class="window-titlebar__balance" aria-hidden="true"></span>
+            </header>
+            <div class="window-content" data-window-content></div>
+            <span class="resize-handle resize-handle--n" data-resize="n" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--e" data-resize="e" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--s" data-resize="s" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--w" data-resize="w" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--ne" data-resize="ne" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--se" data-resize="se" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--sw" data-resize="sw" aria-hidden="true"></span>
+            <span class="resize-handle resize-handle--nw" data-resize="nw" aria-hidden="true"></span>
+        </section>
+    </template>
 </body>
 </html>
